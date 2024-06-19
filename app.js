@@ -9,6 +9,7 @@ const hpp = require('hpp');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const compress = require('compress');
 
 const app = express();
 
@@ -71,6 +72,9 @@ app.use(
         },
     }),
 );
+
+// Res compress
+app.use(compress());
 
 // Development logging
 if (process.env.NODE_ENV === 'development') {

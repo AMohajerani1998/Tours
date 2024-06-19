@@ -12365,7 +12365,7 @@ var login = exports.login = /*#__PURE__*/function () {
           _context.next = 3;
           return (0, _axios.default)({
             method: 'POST',
-            url: 'http://127.0.0.1:3000/api/v1/users/login',
+            url: '/api/v1/users/login',
             data: {
               email: email,
               password: password
@@ -12405,23 +12405,22 @@ var logout = exports.logout = /*#__PURE__*/function () {
           _context2.next = 3;
           return (0, _axios.default)({
             method: 'GET',
-            url: 'http://127.0.0.1:3000/api/v1/users/logout'
+            url: '/api/v1/users/logout'
           });
         case 3:
           document.cookie = "jwt=";
-          console.log('test');
           location.reload(true);
-          _context2.next = 11;
+          _context2.next = 10;
           break;
-        case 8:
-          _context2.prev = 8;
+        case 7:
+          _context2.prev = 7;
           _context2.t0 = _context2["catch"](0);
           (0, _alert.showAlert)('error', 'There was an error. Please try again!');
-        case 11:
+        case 10:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[0, 8]]);
+    }, _callee2, null, [[0, 7]]);
   }));
   return function logout() {
     return _ref2.apply(this, arguments);
@@ -12493,7 +12492,7 @@ var updateUser = exports.updateUser = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          link = type === 'password' ? 'http://127.0.0.1:3000/api/v1/users/updateMyPassword' : 'http://127.0.0.1:3000/api/v1/users/updateMe';
+          link = type === 'password' ? '/api/v1/users/updateMyPassword' : '/api/v1/users/updateMe';
           _context.next = 4;
           return (0, _axios.default)({
             method: 'PATCH',
@@ -12553,7 +12552,7 @@ var bookTour = exports.bookTour = /*#__PURE__*/function () {
           _context.prev = 1;
           _context.next = 4;
           return (0, _axios.default)({
-            url: "http://127.0.0.1:3000/api/v1/bookings/checkout-session/".concat(tourId),
+            url: "/api/v1/bookings/checkout-session/".concat(tourId),
             withCredentials: true
           });
         case 4:
@@ -12728,7 +12727,6 @@ if (mapBox) {
 }
 if (logInform) {
   logInform.addEventListener('submit', function (event) {
-    console.log('test');
     event.preventDefault();
     var formData = new FormData(logInform);
     var email = formData.get('email');
@@ -12795,7 +12793,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51879" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56720" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

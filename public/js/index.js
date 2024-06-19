@@ -19,7 +19,6 @@ if (mapBox) {
 
 if (logInform) {
     logInform.addEventListener('submit', (event) => {
-        console.log('test');
         event.preventDefault();
         const formData = new FormData(logInform);
         const email = formData.get('email');
