@@ -21,13 +21,7 @@ const viewsRouter = require('./routes/viewsRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
 
 // Global middlewares
-// Serving static files
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Serving templates for render
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views'));
-
+// Global middlewares
 // Set cors policy
 const corsOptions = {
     origin: ['*', 'http://localhost:3000'], // You can specify the allowed origin here or use a specific domain
@@ -36,6 +30,16 @@ const corsOptions = {
     credentials: true, // remove later ??
 };
 app.use(cors(corsOptions));
+
+// Cors for complex requests
+app.options('*', cors());
+
+// Serving static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Serving templates for render
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
 
 // Set security http headers
 const scriptSrcUrls = [
