@@ -8,7 +8,8 @@ const Factory = require('./factoryHandlers');
 
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     // Get the tour
-    const tour = await Tour.findById(req.params.tourId);
+    const tour = await Tour.findById(req.params.tourId).populate('bookings');
+    if (tour.bookings.length >= tour.maxGroupSize) return next(new AppError(400, 'This tour is all booked out!'));
 
     // Create checkout session
     const session = await stripe.checkout.sessions.create({

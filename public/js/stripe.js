@@ -14,6 +14,7 @@ export const bookTour = async (tourId) => {
             sessionId: session.data.session.id,
         });
     } catch (err) {
-        showAlert('error', err.response.message);
+        showAlert('error', err.response.data.message);
+        document.getElementById('bookingBtn').innerText = 'book tour now!';
     }
 };

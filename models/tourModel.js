@@ -132,6 +132,12 @@ tourSchema.virtual('reviews', {
     localField: '_id',
 });
 
+tourSchema.virtual('bookings', {
+    ref: 'Booking',
+    foreignField: 'tour',
+    localField: '_id',
+});
+
 // tourSchema.pre("save", async function (next) {
 //     const guides = this.guides.map(async (id) => await User.findById(id));
 //     this.guides = await Promise.all(guides);

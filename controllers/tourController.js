@@ -189,7 +189,7 @@ const getTourDistances = catchAsync(async (req, res, next) => {
 
 const getAllTours = factory.getAll(Tour);
 const newTour = factory.createOne(Tour);
-const getSingleTour = factory.getOne(Tour, { path: 'reviews' });
+const getSingleTour = factory.getOne(Tour, { path: 'reviews' }, { path: 'bookings' });
 const updateTour = factory.updateOne(Tour);
 const deleteTour = factory.deleteOne(Tour);
 

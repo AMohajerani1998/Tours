@@ -34,11 +34,16 @@ exports.createOne = (Model) =>
         });
     });
 
-exports.getOne = (Model, populateOptions) =>
+exports.getOne = (Model, ...populateOptions) =>
     catchAsync(async (req, res, next) => {
         let query = Model.findById(req.params.id);
-        if (populateOptions) query = query.populate(populateOptions);
+        if (populateOptions) {
+            populateOptions.forEach((pop) => {
+                query = query.populate(pop);
+            });
+        }
         const document = await query;
+
         if (!document) {
             return next(new AppError(404, 'Could not find the document!'));
         }
